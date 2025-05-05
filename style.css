@@ -83,7 +83,7 @@ nav a {
   margin: 0 10px;
 }
 
-/* الانترو */
+
 .intro {
   background: url('logo/Artboard\ 1.png') no-repeat center center/cover;
   height: 170vh;
@@ -93,6 +93,8 @@ nav a {
   flex-direction: column;
   text-align: center;
   position: relative;
+  z-index: 999;
+
 }
 
 .intro-overlay h1, .intro-overlay h2 {
@@ -175,7 +177,7 @@ nav a {
   position: relative;
   margin-top: -750px;
   padding: 0 100px; /* مسافة من اليمين */
-  z-index: 5; /* فوق الصورة */
+  z-index: 1000; /* فوق الصورة */
   text-align: right; /* يخلي الكلام كله يمين */
    padding-top: 200px; /* لو تبي تنزله شوي */
   
@@ -201,17 +203,17 @@ padding-top: 30px;
 
 .about2 {
   background-color: #044f12;
-  padding: 50px 10px; /* عشان يكون فيه تنفس حول الكلام */
-  text-align: center; /* يخلي الكلام بالنص إذا تبيه بالنص */
+  padding: 50px 10px;
+  text-align: center;
   margin-top: 50px;
-  
   height: 350px;
+  position: relative;
+  overflow: hidden;
 }
 
 .about2 h2,
 .about2 p {
-  color: white; /* تخلي النص أبيض عشان يكون واضح على الأخضر */
-  
+  color: white;
 }
 
 .about2 h2 {
@@ -220,6 +222,58 @@ padding-top: 30px;
 
 .about2 p {
   font-size: 35px;
+}
+
+#message {
+  position: relative; /* ضروري عشان الـ absolute داخل القسم يتمركز بناءً عليه */
+
+}
+
+
+/* الصور التزيينية */
+.broccoli-transition {
+  position: absolute;
+  bottom: -214px; /* نزّلها لحد ما تدخل فوق بداية السكشن اللي بعده */
+  left: 0;
+  width: 350px;
+  height: auto;
+  margin-left: -20px;
+  z-index: 2;
+}
+
+.cucumber-transition {
+  position: absolute;
+  bottom: -490px; /* ترفع الصورة فوق */
+  right: 0;
+  width: 210px; /* حسب حجم الصورة */
+  height: auto;
+  z-index: 2;
+}
+
+.decor-nakheel {
+  position: absolute;
+  width: 400px;
+  opacity: 0;
+  transform: translateY(100px) rotate(20deg);
+  transition: all 1.5s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.left-decor {
+  left: -10px;
+  bottom: 60px;
+}
+
+.right-decor {
+  right: -10px;
+  bottom: 60px;
+}
+
+/* إذا دخل القسم: تشتغل الحركة */
+.values1.show .decor-nakheel {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
 }
 
 .values1 {
@@ -242,7 +296,7 @@ padding-top: 30px;
 }
 
 .card {
-  background-color: #f4f4f4;
+  background-color: #044f12;
   padding: 40px 20px;
   width: 300px;
   border-radius: 20px;
@@ -255,22 +309,24 @@ padding-top: 30px;
 }
 
 .card h3 {
-  color: #044f12;
+  color: #ffffff;
   font-size: 32px;
   margin-bottom: 20px;
 }
 
 .card p {
   font-size: 20px;
-  color: #333;
+  color: #ffffff;
 }
 
 .truck {
   position: relative;
   padding: 100px 50px;
-  background-color: #ffffff;
+  background: url('logo/PC-green-road.png') no-repeat center bottom;
+  background-size: cover;
   text-align: right;
   overflow: hidden;
+  z-index: 1;
 }
 
 .vision-text {
@@ -374,9 +430,28 @@ padding-top: 30px;
 }
 
 .services-section {
-  text-align: center;
-  padding: 100px 50px;
-  background-color: #ffffff;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  padding-bottom: -100vh;
+}
+
+.services-section .services-bg-img {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: -16px;
+  width: 95%;
+  height: auto;
+  object-fit: cover;     /* تخليها تغطي كل المساحة */
+  z-index: 0;
+  opacity: 100;          /* خفف حسب الرغبة */
+  pointer-events: none;  /* تمنع التفاعل معها */
+}
+
+.services-section > *:not(.services-bg-img) {
+  position: relative;
+  z-index: 1;
 }
 
 .services-section h2 {
@@ -523,17 +598,29 @@ nav a:hover::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #ffffff; /* لون الخلفية أبيض ناعم */
+  background: url('logo/image\ \(7\).png') no-repeat center center;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 15000;
   transition: opacity 0.5s ease;
 }
 
 .loader-logo {
-  width: 200px; /* حجم الشعار أثناء اللودينق */
+  width: 340px; /* حجم الشعار أثناء اللودينق */
   animation: pulse 2s infinite;
+}
+
+.about1 p {
+  max-width: 80%;
+}
+.inline-vegetable {
+  width: 300px;
+  margin-top: -165px;
+  margin-right: 900px;
+  
+  margin-bottom: -100px;
 }
 
 /* حركة خفيفة للشعار */
@@ -560,15 +647,105 @@ nav a:hover::after {
 }
 
 .loader-text {
-  margin-top: 20px;
-  font-size: 24px;
+  margin-top: 10px;
+  font-size: 18px;
   color: #044f12;
   font-weight: bold;
   animation: pulse 2s infinite; /* نفس حركة الشعار بالضبط */
+  max-width: 50%;
 }
 
 /* تجاوب للخط مع الشاشات الصغيرة */
 @media (max-width: 768px) {
+
+  .card.animate-right,
+  .card.animate-left {
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    position: relative;
+    z-index: 2;
+  }
+
+  .card.animate-right {
+    transform: translateX(40px); /* تحرك بسيط من اليمين */
+  }
+
+  .card.animate-left {
+    transform: translateX(-40px); /* تحرك بسيط من اليسار */
+  }
+
+  .card.show {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .decor-nakheel {
+    width: 400px;
+  }
+
+  .left-decor {
+    left: -30px;
+    bottom: 100px;
+  }
+
+  .right-decor {
+    right: -30px;
+    bottom: 450px;
+  }
+
+  .services-section {
+    padding: 100px 30px 300px 30px; /* مسافة كبيرة تحت */
+    min-height: 850px; /* أطول */
+    background-color: #fff;
+  }
+
+  .services-section .services-bg-img {
+    width: 100%;
+    bottom: 0;
+    opacity: 100;
+    margin-right: 16px;
+  }
+
+
+  .truck {
+    background-image: url('logo/green-road.png');
+  }
+
+  .about-sub-p {
+    font-size: 13px;
+    max-width: 50%; /* قلل النسبة كل ما بغيت الجملة تضيق */
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+  }
+    
+  .inline-vegetable {
+    width: 150px;
+    
+    margin-right: 325px;
+    margin-top: -50px;
+    margin-bottom: -70px;
+  }
+
+  .broccoli-transition {
+    position: absolute;
+    bottom: -145px; /* نزّلها لحد ما تدخل فوق بداية السكشن اللي بعده */
+    left: 0;
+    width: 167px;
+    height: auto;
+    margin-left: -20px;
+    z-index: 2;
+  }
+  
+  .cucumber-transition {
+    position: absolute;
+    bottom: -405px; /* ترفع الصورة فوق */
+    right: 0;
+    width: 167px; /* حسب حجم الصورة */
+    height: auto;
+    z-index: 2;
+  }
+ 
   .nav-container {
     display: flex;
     flex-direction: row;
@@ -600,8 +777,36 @@ nav a:hover::after {
     font-size: 14px;
     margin: 0 5px;
   }
+
+  .intro {
+    background: url('logo/phonewall.png') no-repeat center center;
+    background-size: 100%; /* تزوم شوي مع المحافظة على التناسق */
+    height: 100vh; /* خله بنفس ارتفاع الشاشة */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    background-position: center 0%; /* هنا السر */
+  }
+
+  .intro .intro-overlay h1 {
+    font-size: 35px;
+    margin-top: 0;
+  }
+
+  .intro .intro-overlay h2 {
+    font-size: 10px;
+    margin-top: 10px;
+  }
   
 }
+
+
+.card.animate-right:nth-of-type(1) { transition-delay: 0s; }
+.card.animate-left:nth-of-type(2) { transition-delay: 0.2s; }
+.card.animate-right:nth-of-type(3) { transition-delay: 0.4s; }
 
 @media (max-width: 480px) {
   .loader-logo {
@@ -617,9 +822,9 @@ nav a:hover::after {
 
 @media (max-width: 992px) {
 
-  .intro-overlay h1 {
-    font-size: px;
-  }
+  
+ 
+
   .about1 {
     padding: 50px 20px;
     margin-top: -450px;
@@ -646,6 +851,7 @@ nav a:hover::after {
     font-size: 20px;
   }
 
+  
   .values1 h2 {
     font-size: 50px;
   }
@@ -695,13 +901,13 @@ nav a:hover::after {
 
 @media (max-width: 600px) {
   .intro .intro-overlay h1 {
-    font-size: 40px;
-    margin-top: -198px;
+    font-size: 35px;
+    margin-top: -300px;
   }
 
   .intro .intro-overlay h2 {
     font-size: 20px;
-    padding-top: 30px;
+    padding-top: 1px;
   }
 
   .intro {
@@ -715,5 +921,114 @@ nav a:hover::after {
   }
   
 
+}
+
+.about2 {
+  position: relative;
+  overflow: hidden; /* عشان الخلفية ما تطلع خارج */
+  z-index: 1;
+}
+
+.about2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url('logo/111111.png') no-repeat center center;
+  background-size: cover;
+  opacity: 0.2; /* درجة الشفافية، زودها أو نقصها حسب اللي تبي */
+  z-index: 0;
+}
+
+.about2 h2,
+.about2 p {
+  position: relative;
+  z-index: 1;
+}
+
+.values1 {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.values1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url('') no-repeat center center;
+  background-size: cover;
+  opacity: 0.15; /* شفافية أقل شوي عشان ما تشتت الكروت */
+  z-index: 0;
+}
+
+.values1 h2,
+.values1 .card {
+  position: relative;
+  z-index: 1;
+}
+
+.services-section {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.services-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url('') no-repeat center center;
+  background-size: cover;
+  opacity: 0.15; /* نفس الشفافية المستخدمة في القيم */
+  z-index: 0;
+}
+
+.services-section h2,
+.services-section .services-list {
+  position: relative;
+  z-index: 1;
+}
+
+
+.truck {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.truck::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url('') no-repeat center center;
+  background-size: cover;
+  opacity: 0.15; /* خفيفة بحيث ما تغطي على الشاحنة أو النص */
+  z-index: 0;
+}
+
+.truck .vision-text,
+.truck .vision-truck-area {
+  position: relative;
+  z-index: 1;
+}
+
+.values1 {
+  background: url('logo/Vegatable\ Back.png') no-repeat center center;
+  background-size: cover;
+  padding: 100px 20px; /* عشان ما تنحشر المحتويات */
+  position: relative;
+  z-index: 1;
 }
 
