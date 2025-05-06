@@ -598,7 +598,7 @@ nav a:hover::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('logo/image\ \(12\).png') no-repeat center center;
+  background: url('logo/image\ \(13\).png') no-repeat center center;
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -666,8 +666,86 @@ nav a:hover::after {
   background-image: url('logo/image\ \(11\).png');
 }
 
+.vision1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 150px 50px;
+  background: url('logo/PC-green-road.png') no-repeat center bottom;
+  background-size: cover;
+  min-height: 100vh;
+  
+}
+
+.vision-text1 {
+  flex: 1;
+  max-width: 50%;
+  text-align: right;
+}
+
+.vision-text1 h2 {
+  font-size: 70px;
+  color: #044f12;
+  margin-bottom: 20px;
+}
+
+.vision-text1 p {
+  font-size: 24px;
+  color: #333;
+  line-height: 1.8;
+}
+
+/* صورة الشاحنة */
+.vision-img {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  
+}
+.truck-img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  position: relative;
+  bottom: 60px;        /* ترفعها فوق الخط */
+  z-index: 2;          /* تضمن أنها فوق */
+  margin-left: 0;
+  margin-right: auto;  /* هذا يخليها تلصق يسار */
+  display: block;
+}
+
+
+
+
+
 /* تجاوب للخط مع الشاشات الصغيرة */
 @media (max-width: 768px) {
+
+  .vision1 {
+    flex-direction: column;
+    align-items: flex-start; /* مهم عشان الكلام يبقى يمين */
+    padding: 80px 20px;
+  }
+
+  .vision-text1 {
+    max-width: 100%;
+    text-align: right;
+  }
+
+  .vision-text1 h2 {
+    font-size: 40px;
+  }
+
+  .vision-text1 p {
+    font-size: 18px;
+  }
+
+  
+
+  .truck-img {
+    width: 100%;
+    max-width: 90%;
+  }
 
   #intro-loader {
     position: fixed;
@@ -675,7 +753,7 @@ nav a:hover::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('logo/image\ \(7\).png') no-repeat center center;
+    background: url('logo/image\ \(14\).png') no-repeat center center;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -738,9 +816,19 @@ nav a:hover::after {
   }
 
 
-  .truck {
-    background-image: url('logo/green-road.png');
-  }
+.truck {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap; /* يخليه ينزل تحت في الجوال */
+  padding: 100px 50px;
+  background: url('logo/PC-green-road.png') no-repeat center bottom;
+  background-size: cover;
+  text-align: right;
+  overflow: hidden;
+  z-index: 1;
+}
 
   .about-sub-p {
     font-size: 13px;
@@ -863,7 +951,7 @@ nav a:hover::after {
   }
 
   .about1 h2 {
-    font-size: 60px;
+    font-size: 2px;
   }
 
   .about1 p {
@@ -1032,9 +1120,8 @@ nav a:hover::after {
 
 
 .truck {
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+  flex-direction: column;
+  text-align: center;
 }
 
 .truck::before {
@@ -1050,10 +1137,13 @@ nav a:hover::after {
   z-index: 0;
 }
 
-.truck .vision-text,
-.truck .vision-truck-area {
-  position: relative;
-  z-index: 1;
+.vision-text, .vision-truck-area {
+  flex: 1 1 100%;
+}
+
+.vision-truck-area img {
+  max-width: 100%;
+  height: auto;
 }
 
 .values1 {
